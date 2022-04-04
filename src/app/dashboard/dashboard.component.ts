@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -18,8 +19,13 @@ export class DashboardComponent implements OnInit {
   // amt1=""
 
   user=""
+  acno:any
+  ldate:any
 
-  constructor(private ds:DataService,private fb:FormBuilder) {  this.user=ds.loggedUser}
+  constructor(private ds:DataService,private fb:FormBuilder ,private router:Router) {
+      this.user=ds.loggedUser
+      this.ldate= new Date()
+    }
   
   depositForm=this.fb.group({
 
@@ -38,6 +44,12 @@ withdrawForm=this.fb.group({
 
 
   ngOnInit(): void {
+    if(! localStorage.getItem("currentAcno"))
+    {
+       alert("Please Login ")
+       this.router.navigateByUrl("")
+
+    }
   }
 
   deposit(){
@@ -94,6 +106,22 @@ withdrawForm=this.fb.group({
 
 
 
+  }
+
+  logOut()
+  {
+    localStorage.removeItem("currentAcno")
+    this.router.navigateByUrl("")
+    
+  }
+  deleteAcc()
+  {
+    this.acno=localStorage.getItem("currentAcno")
+
+  }
+  cancelFromParent()
+  {
+    this.acno=""
   }
 
 

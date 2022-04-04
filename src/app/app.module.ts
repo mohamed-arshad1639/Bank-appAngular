@@ -7,13 +7,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { DeleteConformationComponent } from './delete-conformation/delete-conformation.component';
+import { HeadingDirective } from './directive/heading.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    TransactionComponent,
+    DeleteConformationComponent,
+    HeadingDirective
   ],
   imports: [
     BrowserModule,
